@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">Is It Prime</string>
+
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="press_start">Press Start</string>
+    <string name="correct">Correct</string>
+    <string name="incorrect">Incorrect</string>
+    <string name="next">Next</string>
+    <string name="start">Start</string>
+
+</resources>

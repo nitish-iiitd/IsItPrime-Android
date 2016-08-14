@@ -1,0 +1,91 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:fillViewport="true">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/blue"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="2">
+
+            <TextView
+                android:id="@+id/questionTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:layout_gravity="center_horizontal|center"
+                android:background="@drawable/round_textview_white"
+                android:fontFamily="sans-serif-light"
+                android:padding="10dp"
+                android:text="@string/press_start"
+                android:textAppearance="?android:attr/textAppearanceLarge" />
+        </RelativeLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end"
+            android:layout_weight="1"
+            android:gravity="center_horizontal"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/trueButton"
+                style="?android:attr/borderlessButtonStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:background="@drawable/round_button_green"
+                android:clickable="false"
+                android:fontFamily="sans-serif"
+                android:onClick="checkTrue"
+                android:padding="@dimen/abc_action_bar_default_padding_material"
+                android:text="@string/correct"
+                android:textColor="@color/white" />
+
+            <Button
+                android:id="@+id/falseButton"
+                style="?android:attr/borderlessButtonStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:background="@drawable/round_button_red"
+                android:clickable="false"
+                android:fontFamily="sans-serif"
+                android:onClick="checkFalse"
+                android:padding="@dimen/abc_action_bar_default_padding_material"
+                android:text="@string/incorrect"
+                android:textColor="@color/white" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <Button
+                android:id="@+id/nextButton"
+                style="?android:attr/borderlessButtonStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:background="@drawable/round_textview_white"
+                android:clickable="true"
+                android:fontFamily="sans-serif-light"
+                android:onClick="displayNextQuestion"
+                android:text="@string/start"
+
+                />
+        </LinearLayout>
+
+
+    </LinearLayout>
+</ScrollView>

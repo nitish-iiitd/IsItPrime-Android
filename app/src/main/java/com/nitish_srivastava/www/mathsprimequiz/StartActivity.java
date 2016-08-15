@@ -10,10 +10,6 @@ import android.support.v7.app.AppCompatActivity;
  */
 public class StartActivity extends AppCompatActivity {
 
-    private final long startTime = 1 * 1000;
-    private final long interval = 1 * 1000;
-    private CountDownTimer countDownTimer;
-
     /*
     * Waits for 1 second and then goes to next screen.
     * */
@@ -21,9 +17,13 @@ public class StartActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_start);
-        getSupportActionBar().hide();
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().hide();
+        }
 
-        countDownTimer = new MyCountDownTimer(startTime, interval);
+        long startTime = 1000;
+        long interval = 1000;
+        CountDownTimer countDownTimer = new MyCountDownTimer(startTime, interval);
         countDownTimer.start();
     }
 

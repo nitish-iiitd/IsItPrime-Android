@@ -108,7 +108,7 @@ public class QuizActivity extends AppCompatActivity {
         if (check) {
 
             /* Creating the toast for CORRECT */
-            Toast toast = Toast.makeText(this, Html.fromHtml("<font color='#57D8B8' ><b> Correct !</b></font>"), Toast.LENGTH_SHORT);
+            Toast toast = Toast.makeText(this, Html.fromHtml("<font color='#28DE08' ><b> Correct !</b></font>"), Toast.LENGTH_SHORT);
             toast.setGravity(Gravity.TOP | Gravity.CENTER_HORIZONTAL, toast.getXOffset(), 0);
             View toastView = toast.getView();
             toastView.setBackgroundResource(R.drawable.toast);
@@ -159,7 +159,7 @@ public class QuizActivity extends AppCompatActivity {
             nextButton.setText("Try Again");
         } else {
             /* Creating the toast for CORRECT */
-            Toast toast = Toast.makeText(this, Html.fromHtml("<font color='#57D8B8' > Correct !</font>"), Toast.LENGTH_SHORT);
+            Toast toast = Toast.makeText(this, Html.fromHtml("<font color='#28DE08' > Correct !</font>"), Toast.LENGTH_SHORT);
             toast.setGravity(Gravity.TOP | Gravity.CENTER_HORIZONTAL, toast.getXOffset(), 0);
             View toastView = toast.getView();
             toastView.setBackgroundResource(R.drawable.toast);

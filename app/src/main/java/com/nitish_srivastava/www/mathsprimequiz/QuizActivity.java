@@ -1,9 +1,9 @@
 package com.nitish_srivastava.www.mathsprimequiz;
 
 import android.graphics.Color;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.text.Html;
 import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -43,7 +43,6 @@ public class QuizActivity extends AppCompatActivity {
         return true;
     }
 
-    //********************* Added Variables and Methods  ***********************//
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -59,7 +58,12 @@ public class QuizActivity extends AppCompatActivity {
 
         return super.onOptionsItemSelected(item);
     }
+    //********************* Added Variables and Methods  ***********************//
 
+
+    /**
+     * Generates a random number between 1 and 1000 (both inclusive)
+     */
     private int randomNumber() {
         Random r = new Random();
         int max = 1000;
@@ -67,6 +71,10 @@ public class QuizActivity extends AppCompatActivity {
         return r.nextInt((max - min) + 1) + min;
     }
 
+    /**
+     * Displays next question by generating a random number.
+     * Called when Start or Next button is clicked.
+     */
     public void displayNextQuestion(View view) {
         TextView questionTextView = (TextView) findViewById(R.id.questionTextView);
         String question = "Is " + randomNumber() + " a prime number ?";
@@ -75,7 +83,6 @@ public class QuizActivity extends AppCompatActivity {
         trueButton.setClickable(true);
         trueButton.setTextColor(Color.WHITE);
         trueButton.setVisibility(View.VISIBLE);
-        //trueButton.setBackground(Drawable.createFromXml(R.drawable.round_button_green,n));
         Button falseButton = (Button) findViewById(R.id.falseButton);
         falseButton.setClickable(true);
         falseButton.setTextColor(Color.WHITE);
@@ -87,6 +94,10 @@ public class QuizActivity extends AppCompatActivity {
         nextButton.setClickable(false);
     }
 
+    /**
+     * Checks if the given statement is TRUE.
+     * Called when TRUE button is clicked.
+     */
     public void checkTrue(View view) {
         TextView questionTextView = (TextView) findViewById(R.id.questionTextView);
         String question = questionTextView.getText().toString();
@@ -95,22 +106,38 @@ public class QuizActivity extends AppCompatActivity {
         boolean check = Arrays.asList(primeNumbers).contains(number);
         Button nextButton = (Button) findViewById(R.id.nextButton);
         if (check) {
-            Toast toast = Toast.makeText(this, " Correct! ", Toast.LENGTH_SHORT);
+
+            /* Creating the toast for CORRECT */
+            Toast toast = Toast.makeText(this, Html.fromHtml("<font color='#57D8B8' ><b> Correct !</b></font>"), Toast.LENGTH_SHORT);
             toast.setGravity(Gravity.TOP | Gravity.CENTER_HORIZONTAL, toast.getXOffset(), 0);
+            View toastView = toast.getView();
+            toastView.setBackgroundResource(R.drawable.toast);
             toast.show();
+
+            /* Setting the NEXT button to be clickable */
             nextButton.setClickable(true);
             nextButton.setTextColor(Color.BLACK);
             nextButton.setText("Next");
         } else {
-            Toast toast = Toast.makeText(this, " Incorrect! ", Toast.LENGTH_SHORT);
+            /* Creating the toast for INCORRECT */
+            Toast toast = Toast.makeText(this, Html.fromHtml("<font color='#fc6c6c' > Incorrect !</font>"), Toast.LENGTH_SHORT);
             toast.setGravity(Gravity.TOP | Gravity.CENTER_HORIZONTAL, toast.getXOffset(), 0);
+            View toastView = toast.getView();
+            toastView.setBackgroundResource(R.drawable.toast);
             toast.show();
+
+            /* Setting the NEXT button to be clickable */
             nextButton.setClickable(false);
             nextButton.setTextColor(Color.GRAY);
             nextButton.setText("Try Again");
         }
     }
 
+
+    /**
+     * Checks if the given statement is FALSE.
+     * Called when FALSE button is clicked.
+     */
     public void checkFalse(View view) {
         TextView questionTextView = (TextView) findViewById(R.id.questionTextView);
         String question = questionTextView.getText().toString();
@@ -119,16 +146,26 @@ public class QuizActivity extends AppCompatActivity {
         boolean check = Arrays.asList(primeNumbers).contains(number);
         Button nextButton = (Button) findViewById(R.id.nextButton);
         if (check) {
-            Toast toast = Toast.makeText(this, " Incorrect! ", Toast.LENGTH_SHORT);
+            /* Creating the toast for INCORRECT */
+            Toast toast = Toast.makeText(this, Html.fromHtml("<font color='#fc6c6c' > Incorrect !</font>"), Toast.LENGTH_SHORT);
             toast.setGravity(Gravity.TOP | Gravity.CENTER_HORIZONTAL, toast.getXOffset(), 0);
+            View toastView = toast.getView();
+            toastView.setBackgroundResource(R.drawable.toast);
             toast.show();
+
+            /* Setting the NEXT button to be clickable */
             nextButton.setClickable(false);
             nextButton.setTextColor(Color.GRAY);
             nextButton.setText("Try Again");
         } else {
-            Toast toast = Toast.makeText(this, " Correct! ", Toast.LENGTH_SHORT);
+            /* Creating the toast for CORRECT */
+            Toast toast = Toast.makeText(this, Html.fromHtml("<font color='#57D8B8' > Correct !</font>"), Toast.LENGTH_SHORT);
             toast.setGravity(Gravity.TOP | Gravity.CENTER_HORIZONTAL, toast.getXOffset(), 0);
+            View toastView = toast.getView();
+            toastView.setBackgroundResource(R.drawable.toast);
             toast.show();
+
+            /* Setting the NEXT button to be clickable */
             nextButton.setClickable(true);
             nextButton.setTextColor(Color.BLACK);
             nextButton.setText("Next");

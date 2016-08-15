@@ -14,17 +14,23 @@ public class StartActivity extends AppCompatActivity {
     private final long interval = 1 * 1000;
     private CountDownTimer countDownTimer;
 
+    /*
+    * Waits for 1 second and then goes to next screen.
+    * */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_start);
         getSupportActionBar().hide();
+
         countDownTimer = new MyCountDownTimer(startTime, interval);
         countDownTimer.start();
     }
 
 
-    //------------------- Timer class -------------------------------
+    /**
+     * Extends CountDownTimer and starts next screen by overriding onFinish()
+     */
     public class MyCountDownTimer extends CountDownTimer {
         public MyCountDownTimer(long startTime, long interval) {
             super(startTime, interval);
@@ -41,6 +47,5 @@ public class StartActivity extends AppCompatActivity {
 
         }
     }
-    //---------------------------------------------------------------
 
 }

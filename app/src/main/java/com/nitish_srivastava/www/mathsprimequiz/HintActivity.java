@@ -1,7 +1,6 @@
 package com.nitish_srivastava.www.mathsprimequiz;
 
 import android.content.Intent;
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -19,8 +18,7 @@ public class HintActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_hint);
-
-
+        getSupportActionBar().hide();
     }
 
     @Override
@@ -59,8 +57,8 @@ public class HintActivity extends AppCompatActivity {
         if (extras != null) {
              value = extras.getString("num");
         }
-        //String hint = ""
-        hintTextView.setText(value);
+        String hint = "Try Clicking Cheat";
+        hintTextView.setText(hint);
     }
 
     public void backToQuiz(View view)

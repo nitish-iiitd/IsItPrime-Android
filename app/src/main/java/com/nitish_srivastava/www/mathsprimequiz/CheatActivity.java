@@ -1,7 +1,6 @@
 package com.nitish_srivastava.www.mathsprimequiz;
 
 import android.content.Intent;
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
@@ -22,7 +21,7 @@ public class CheatActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cheat);
-
+        getSupportActionBar().hide();
 
     }
 
@@ -54,9 +53,6 @@ public class CheatActivity extends AppCompatActivity {
 //        nextScreen.putExtra("flagHint","1");
 
         cheatDisplayed = 1;
-
-
-
         TextView cheatTextView = (TextView) findViewById(R.id.cheat);
 
         Bundle extras = getIntent().getExtras();

@@ -8,5 +8,14 @@
     <string name="incorrect">False</string>
     <string name="next">Next</string>
     <string name="start">Start</string>
+    <string name="title_activity_hint">HintActivity</string>
+    <string name="show_hint">Show Hint</string>
+    <string name="show_cheat">Show Cheat</string>
+    <string name="hint">Hint</string>
+    <string name="back">Back</string>
+    <string name="cheat">Cheat</string>
+    <string name="show_hint_message">Click \'Show Hint\' for hint.</string>
+    <string name="show_cheat_message">Click \'Show Cheat\' for answer.</string>
+    <string name="title_activity_cheat">CheatActivity</string>
 
 </resources>

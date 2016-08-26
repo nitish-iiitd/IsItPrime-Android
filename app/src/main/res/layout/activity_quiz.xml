@@ -85,6 +85,41 @@
 
                 />
         </LinearLayout>
+        <LinearLayout
+            android:id="@+id/hint_cheat_buttons"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end"
+            android:layout_weight="1"
+            android:gravity="center_horizontal"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/hintButton"
+                style="?android:attr/borderlessButtonStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:background="@drawable/round_textview_white"
+                android:fontFamily="sans-serif"
+                android:onClick="goToHint"
+                android:padding="@dimen/abc_action_bar_default_padding_material"
+                android:text="@string/hint"
+                android:textColor="@color/blue" />
+
+            <Button
+                android:id="@+id/cheatButton"
+                style="?android:attr/borderlessButtonStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:background="@drawable/round_textview_white"
+                android:fontFamily="sans-serif"
+                android:onClick="goToCheat"
+                android:padding="@dimen/abc_action_bar_default_padding_material"
+                android:text="@string/cheat"
+                android:textColor="@color/blue" />
+        </LinearLayout>
 
 
     </LinearLayout>

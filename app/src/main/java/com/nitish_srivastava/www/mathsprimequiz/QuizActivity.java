@@ -1,14 +1,17 @@
 package com.nitish_srivastava.www.mathsprimequiz;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.text.Html;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -34,7 +37,23 @@ public class QuizActivity extends AppCompatActivity {
         trueButton.setVisibility(View.GONE);
         Button falseButton = (Button) findViewById(R.id.falseButton);
         falseButton.setVisibility(View.GONE);
+        LinearLayout hintCheatButtons = (LinearLayout)findViewById(R.id.hint_cheat_buttons);
+        hintCheatButtons.setVisibility(View.GONE);
     }
+
+    @Override
+    public void onStop()
+    {
+        super.onStop();
+        Log.d("tag", "onstop called");
+    }
+    @Override
+    public void onPause()
+    {
+        super.onPause();
+        Log.d("tag", "onpause called");
+    }
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -76,6 +95,13 @@ public class QuizActivity extends AppCompatActivity {
      * Called when Start or Next button is clicked.
      */
     public void displayNextQuestion(View view) {
+
+        // setting hintFlag = 0 and cheatFlag = 0
+        Intent nextScreen = new Intent(getApplicationContext(), HintActivity.class);
+        nextScreen.putExtra("flagHint",0);
+        nextScreen.putExtra("flagCheat",0);
+
+
         TextView questionTextView = (TextView) findViewById(R.id.questionTextView);
         String question = "Is " + randomNumber() + " a prime number ?";
         questionTextView.setText(question);
@@ -92,6 +118,9 @@ public class QuizActivity extends AppCompatActivity {
         nextButton.setText("Next");
         nextButton.setTextColor(Color.GRAY);
         nextButton.setClickable(false);
+
+        LinearLayout hintCheatButtons = (LinearLayout)findViewById(R.id.hint_cheat_buttons);
+        hintCheatButtons.setVisibility(View.VISIBLE);
     }
 
     /**
@@ -139,6 +168,7 @@ public class QuizActivity extends AppCompatActivity {
      * Called when FALSE button is clicked.
      */
     public void checkFalse(View view) {
+
         TextView questionTextView = (TextView) findViewById(R.id.questionTextView);
         String question = questionTextView.getText().toString();
         String questionSplit[] = question.split(" ");
@@ -171,6 +201,59 @@ public class QuizActivity extends AppCompatActivity {
             nextButton.setText("Next");
 
         }
+    }
+
+    public void goToHint(View view) {
+
+        TextView questionTextView = (TextView) findViewById(R.id.questionTextView);
+        String question = questionTextView.getText().toString();
+        String questionSplit[] = question.split(" ");
+        Intent nextScreen = new Intent(getApplicationContext(), HintActivity.class);
+        nextScreen.putExtra("num",questionSplit[1]);
+        startActivityForResult(nextScreen, 0); // request code = 0
+
+    }
+
+    public void goToCheat(View view) {
+
+        TextView questionTextView = (TextView) findViewById(R.id.questionTextView);
+        String question = questionTextView.getText().toString();
+        String questionSplit[] = question.split(" ");
+        Intent nextScreen = new Intent(getApplicationContext(), CheatActivity.class);
+        nextScreen.putExtra("num",questionSplit[1]);
+        startActivityForResult(nextScreen, 1); // request code = 1
+
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        // Check which request we're responding to
+        //System.out.println("inside activity result  " + requestCode +"  " +resultCode);
+        Log.d("quiz","inside onact");
+            if (requestCode == 0) {
+                //if(resultCode == -1) {
+                int value=0;
+                //System.out.println("value : "+value);
+                    value = data.getIntExtra("flagHint", 0);
+                    System.out.println("value : "+value);
+                if(value==1)
+                {
+                    Toast.makeText(this, "You have used hint !", Toast.LENGTH_SHORT).show();
+                }
+
+            }
+            if (requestCode == 1) {
+                //if(resultCode == -1) {
+                int value=0;
+                //System.out.println("value : "+value);
+                value = data.getIntExtra("flagCheat", 0);
+                System.out.println("value : " + value);
+                if(value==1)
+                {
+                    Toast.makeText(this, "You have cheated !", Toast.LENGTH_SHORT).show();
+                }
+            }
+
     }
 
 }

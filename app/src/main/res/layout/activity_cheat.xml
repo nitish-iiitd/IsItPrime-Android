@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/start_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/blue"
+    android:orientation="vertical"
+    android:gravity="center">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:layout_weight="3">
+
+        <TextView
+            android:id="@+id/cheat"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_gravity="center_horizontal|center"
+
+            android:fontFamily="sans-serif-light"
+            android:padding="10dp"
+            android:text="@string/show_cheat_message"
+            android:textAppearance="?android:attr/textAppearanceLarge" />
+
+        <Button
+            android:id="@+id/showCheatButton"
+            style="?android:attr/borderlessButtonStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:background="@drawable/round_textview_white"
+            android:fontFamily="sans-serif-light"
+            android:padding="10dp"
+            android:onClick="displayCheat"
+            android:text="@string/show_cheat"
+            />
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="bottom"
+        android:orientation="vertical"
+        android:layout_weight="9"
+        android:padding="5dp">
+        <Button
+            android:id="@+id/backButton"
+            style="?android:attr/borderlessButtonStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:background="@drawable/round_textview_white"
+            android:fontFamily="sans-serif-light"
+            android:onClick="backToQuiz"
+            android:text="@string/back"
+            android:layout_gravity="center_horizontal"
+            />
+
+    </LinearLayout>
+
+
+</LinearLayout>
